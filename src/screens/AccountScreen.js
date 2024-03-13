@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import * as Keychain from 'react-native-keychain'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Button from '../components/CustomButton'
-import { Colors, ButtonTitles, Dimension } from '../constants'
+import { Colors, ButtonTitles, Dimension, Spacing } from '../constants'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 const AccountScreen = () => {
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.gray,
     borderRadius: 5,
-    height: Dimensions.buttonHeight,
-    width:  Dimensions.buttonWidth,
+    height: Spacing.buttonHeight,
+    width:  Spacing.buttonWidth,
     marginBottom: Dimension.DIM6,
     paddingHorizontal: Dimension.DIM6,
   },

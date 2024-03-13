@@ -5,7 +5,7 @@ export const Colors = {
     gray: '#888888',
 }
 
-export const Dimensions = {
+export const Spacing = {
     buttonHeight: 40,
     buttonWidth: 200,
 }
