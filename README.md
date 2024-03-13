@@ -27,7 +27,7 @@ npx react-native run-ios
 If everything is set up _correctly_, you should see your new app running in your Android emulator and iOS simulator 
 
 ## Step 3: Modifying your App
-To make changes to your app, navigate to the files associated with the following modules:
+**To make changes to your app, navigate to the files associated with the following modules:**
 
 iOS Troubleshooting for RNKeychainManager: If you encounter issues related to RNKeychainManager in iOS, temporarily remove the problematic lines from the file to ensure the app functions properly. Investigate the root cause of the failure with RNKeychainManager. This issue may be related to linking problems, similar to those experienced with vector-icons. While this issue is not critical, it should be addressed.
 

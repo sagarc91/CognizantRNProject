@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
-import { Colors, Dimensions } from '../constants'
+import { Colors, Spacing } from '../constants'
 
 const Button = ({ title, onPress }) => {
     return (
@@ -13,7 +13,7 @@ const Button = ({ title, onPress }) => {
 const styles = StyleSheet.create({
     button: {
         backgroundColor: Colors.primary,
-        height: Dimensions.buttonHeight,
+        height: Spacing.buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,

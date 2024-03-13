@@ -1,3 +1,5 @@
+// NOTE: we can create seperate/appropriate constants as per requirements for Spacing, BorderRadius, IconSize, FontSize etc etc...
+
 export const Colors = {
     primary: '#007bff',
     white: '#ffffff',
@@ -40,8 +42,6 @@ export const Dimension = {
     height: 200,
     width: "100%"
   }
-  // NOTE: we can create seperate constants as per requirements for Spacing, BorderRadius, IconSize, FontSize etc etc...
-
 
 export const FontWeight = {
     light: '300',
