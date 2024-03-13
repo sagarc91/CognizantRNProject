@@ -4,20 +4,21 @@ import { Colors, Dimension, FontWeight } from '../constants'
 import { useSelector } from 'react-redux'
 import { selectProducts } from '../redux/productSlice'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { Product } from '../types/product'
 
-const SearchScreen = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const products = useSelector(selectProducts)
+const SearchScreen: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  const products: Product[] = useSelector(selectProducts)
 
-  const [searchResults, setSearchResults] = useState(products)
+  const [searchResults, setSearchResults] = useState<Product[]>(products)
 
   useEffect(() => {
     handleSearch()
   }, [searchQuery])
 
   const handleSearch = () => {
-    const filteredResults = products.filter(product =>
-      product.title.toLowerCase().includes(searchQuery.toLowerCase()) //searching by title. we may introduce more properties here for search
+    const filteredResults = products.filter((product) =>
+      product?.title?.toLowerCase().includes(searchQuery.toLowerCase())
     )
     setSearchResults(filteredResults)
   }
@@ -29,7 +30,7 @@ const SearchScreen = () => {
           placeholder="Search products"
           style={styles.input}
           value={searchQuery}
-          onChangeText={text => setSearchQuery(text)}
+          onChangeText={(text) => setSearchQuery(text)}
         />
         <TouchableOpacity onPress={handleSearch} style={styles.iconContainer}>
           <Icon name="search" size={24} color={Colors.gray} />
@@ -37,7 +38,7 @@ const SearchScreen = () => {
       </View>
       <FlatList
         data={searchResults}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item) => item?.id?.toString()}
         renderItem={({ item }) => (
           <View style={styles.productItem}>
             <Image style={styles.thumbnail} source={{ uri: item.thumbnail }} />
