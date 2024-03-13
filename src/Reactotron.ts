@@ -9,9 +9,7 @@ if (__DEV__) {
   Reactotron.setAsyncStorageHandler(AsyncStorage)
     .configure({ name: 'CognizantRNTask' })
     .useReactNative()
-    .use(trackGlobalErrors())
     .use(reactotronRedux())
-    .use(networking())
     .connect()
 }
 

@@ -5,11 +5,11 @@ import Reactotron from './Reactotron'
 export default function configureAppStore() {
   let middleware = []
 
-  if (__DEV__) {
-    if (Reactotron.createEnhancer) {
-      middleware.push(Reactotron.createEnhancer())
-    }
-  }
+  // if (__DEV__) {
+  //   if (Reactotron.createEnhancer) {
+  //     middleware.push(Reactotron.createEnhancer())
+  //   }
+  // }
 
   const store = configureStore({
     reducer: {
