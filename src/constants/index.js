@@ -5,6 +5,7 @@ export const Colors = {
     white: '#ffffff',
     black: '#000000',
     gray: '#888888',
+    lightGrey: '#f2f2f2'
 }
 
 export const Spacing = {
@@ -41,11 +42,11 @@ export const Dimension = {
     DIM10: 40,
     height: 200,
     width: "100%"
-  }
+}
 
 export const FontWeight = {
     light: '300',
     normal: '400',
     medium: '500',
     bold: '700',
-  }
+}

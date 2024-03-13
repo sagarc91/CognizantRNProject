@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { View, TextInput, FlatList, Text, StyleSheet, Image } from 'react-native'
-import { ButtonTitles, Colors, Dimension, FontWeight } from '../constants'
-import Button from '../components/CustomButton'
-import {  useSelector } from 'react-redux'
+import { View, TextInput, FlatList, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { Colors, Dimension, FontWeight } from '../constants'
+import { useSelector } from 'react-redux'
 import { selectProducts } from '../redux/productSlice'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const products = useSelector(selectProducts);
 
   const [searchResults, setSearchResults] = useState(products)
+
+  useEffect(() => {
+    handleSearch()
+  }, [searchQuery])
 
   const handleSearch = () => {
     const filteredResults = products.filter(product =>
@@ -20,13 +24,17 @@ const SearchScreen = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        placeholder="Search products"
-        style={styles.input}
-        value={searchQuery}
-        onChangeText={text => setSearchQuery(text)}
-      />
-      <Button title={ButtonTitles.SEARCH} onPress={handleSearch} />
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Search products"
+          style={styles.input}
+          value={searchQuery}
+          onChangeText={text => setSearchQuery(text)}
+        />
+        <TouchableOpacity onPress={handleSearch} style={styles.iconContainer}>
+          <Icon name="search" size={24} color={Colors.gray} />
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={searchResults}
         keyExtractor={item => item.id.toString()}
@@ -68,16 +76,24 @@ const styles = StyleSheet.create({
     fontSize: Dimension.DIM7,
     fontWeight: FontWeight.bold,
   },
-  input: {
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: Dimension.DIM2,
     borderColor: Colors.gray,
     borderRadius: Dimension.DIM4,
+    marginBottom: Dimension.DIM7,
+    paddingHorizontal: Dimension.DIM6,
+    backgroundColor: Colors.white
+  },
+  input: {
+    flex: 1,
     height: Dimension.DIM10,
     paddingHorizontal: Dimension.DIM6,
   },
-  button: {
-    marginVertical: Dimension.DIM8,
-  }
+  iconContainer: {
+    padding: Dimension.DIM3,
+  },
 })
 
 export default SearchScreen

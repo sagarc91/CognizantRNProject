@@ -13,6 +13,7 @@ import ProductScreen from './screens/ProductScreen'
 import AddProductScreen from './screens/AddProduct'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { FontWeight, Dimension } from './constants'
+import { StatusBar } from 'react-native'
 
 const store = configureAppStore()
 const Stack = createStackNavigator()
@@ -20,7 +21,7 @@ const Tab = createBottomTabNavigator()
 
 const HomeStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name={Tabs.HOMESCREEN} component={HomeScreen} options={{ headerShown: true }} />
+    <Stack.Screen name={Tabs.HOMESCREEN} component={HomeScreen} options={{ headerShown: false }} />
     <Stack.Screen name="Product" component={ProductScreen} />
     <Stack.Screen name="AddProduct" component={AddProductScreen} />
   </Stack.Navigator>
@@ -30,18 +31,19 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
         <Tab.Navigator>
           <Tab.Screen name={Tabs.HOMESCREEN} component={HomeStack} options={{
             headerShown: false, tabBarIcon: ({ color, size }) => (
               <Icon name="home" size={size} color={color} />
             )
           }} />
-          <Tab.Screen name={Tabs.SEARCHSCREEN} component={SearchScreen} options={{
+          <Tab.Screen name={Tabs.SEARCHSCREEN} component={SearchScreen} options={{headerShown: false, 
             tabBarIcon: ({ color, size }) => (
               <Icon name="search" size={size} color={color} />
             ),
           }} />
-          <Tab.Screen name={Tabs.ACCOUNTSCREEN} component={AccountScreen} options={{
+          <Tab.Screen name={Tabs.ACCOUNTSCREEN} component={AccountScreen} options={{headerShown: false, 
             tabBarIcon: ({ color, size }) => (
               <Icon name="user" size={size} color={color} />
             ),
