@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState('')
-  const products = useSelector(selectProducts);
+  const products = useSelector(selectProducts)
 
   const [searchResults, setSearchResults] = useState(products)
 
@@ -79,12 +79,17 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: Dimension.DIM2,
-    borderColor: Colors.gray,
+    borderWidth: Dimension.DIM5,
+    borderColor: Colors.white,
     borderRadius: Dimension.DIM4,
     marginBottom: Dimension.DIM7,
     paddingHorizontal: Dimension.DIM6,
-    backgroundColor: Colors.white
+    backgroundColor: Colors.white,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
   },
   input: {
     flex: 1,

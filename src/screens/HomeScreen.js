@@ -23,7 +23,7 @@ const HomeScreen = () => {
       const fetchLoginStatus = async () => {
         const loginStatus = await AsyncStorage.getItem('isLoggedIn')
         setIsLoggedIn(loginStatus === 'true')
-      };
+      }
   
       fetchLoginStatus()
     }, [])
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     width: '100%',
-    height: Dimension.height / 2, // Set height of thumbnail
+    height: Dimension.height1, // Set height of thumbnail
     resizeMode: 'cover',
     borderTopLeftRadius: Dimension.DIM5, // Add border radius to top-left and top-right corners
     borderTopRightRadius: Dimension.DIM5,

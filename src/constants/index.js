@@ -1,11 +1,11 @@
 // NOTE: we can create seperate/appropriate constants as per requirements for Spacing, BorderRadius, IconSize, FontSize etc etc...
 
 export const Colors = {
-    primary: '#007bff',
+    primary: '#008080',
     white: '#ffffff',
     black: '#000000',
     gray: '#888888',
-    lightGrey: '#f2f2f2'
+    lightGrey: '#f2f2f2',
 }
 
 export const Spacing = {
@@ -41,6 +41,9 @@ export const Dimension = {
     DIM9: 24,
     DIM10: 40,
     height: 200,
+    height1: 150,
+    height2: 200,
+    height3: 350,
     width: "100%"
 }
 

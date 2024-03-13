@@ -6,7 +6,7 @@ import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
 import AccountScreen from './screens/AccountScreen'
 import { StyleSheet } from 'react-native'
-import { Tabs } from "./constants"
+import { Tabs, Colors } from "./constants"
 import { Provider } from 'react-redux'
 import configureAppStore from './store'
 import ProductScreen from './screens/ProductScreen'
@@ -22,8 +22,12 @@ const Tab = createBottomTabNavigator()
 const HomeStack = () => (
   <Stack.Navigator>
     <Stack.Screen name={Tabs.HOMESCREEN} component={HomeScreen} options={{ headerShown: false }} />
-    <Stack.Screen name="Product" component={ProductScreen} />
-    <Stack.Screen name="AddProduct" component={AddProductScreen} />
+    <Stack.Screen name="Product" component={ProductScreen} options={{
+      title: 'Product Details'
+    }} />
+    <Stack.Screen name="AddProduct" component={AddProductScreen} options={{
+      title: 'Add Product'
+    }} />
   </Stack.Navigator>
 )
 
@@ -31,19 +35,23 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
-        <Tab.Navigator>
+        <StatusBar backgroundColor="white" barStyle="dark-content" />
+        <Tab.Navigator tabBarOptions={{
+            activeTintColor: Colors.primary
+          }}>
           <Tab.Screen name={Tabs.HOMESCREEN} component={HomeStack} options={{
             headerShown: false, tabBarIcon: ({ color, size }) => (
               <Icon name="home" size={size} color={color} />
             )
           }} />
-          <Tab.Screen name={Tabs.SEARCHSCREEN} component={SearchScreen} options={{headerShown: false, 
+          <Tab.Screen name={Tabs.SEARCHSCREEN} component={SearchScreen} options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <Icon name="search" size={size} color={color} />
             ),
           }} />
-          <Tab.Screen name={Tabs.ACCOUNTSCREEN} component={AccountScreen} options={{headerShown: false, 
+          <Tab.Screen name={Tabs.ACCOUNTSCREEN} component={AccountScreen} options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <Icon name="user" size={size} color={color} />
             ),

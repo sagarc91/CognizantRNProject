@@ -10,12 +10,32 @@ const ProductScreen = ({ route }) => {
       <Image style={styles.thumbnail} source={{ uri: product.thumbnail }} />
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
-      <Text style={styles.price}>Price: ${product.price}</Text>
-      <Text style={styles.price}>Brand: {product.brand}</Text>
-      <Text style={styles.price}>Category: {product.category}</Text>
-      <Text style={styles.price}>Rating: {product.rating}</Text>
-      <Text style={styles.price}>Stock: {product.stock}</Text>
-      <Text style={styles.price}>Discount: {product.discountPercentage}</Text>
+      <View style={styles.detailsContainer}>
+        <View style={styles.detailItem}>
+          <Text style={styles.detailTitle}>Price:</Text>
+          <Text style={styles.detailValue}>${product.price}</Text>
+        </View>
+        <View style={styles.detailItem}>
+          <Text style={styles.detailTitle}>Brand:</Text>
+          <Text style={styles.detailValue}>{product.brand}</Text>
+        </View>
+        <View style={styles.detailItem}>
+          <Text style={styles.detailTitle}>Category:</Text>
+          <Text style={styles.detailValue}>{product.category}</Text>
+        </View>
+        <View style={styles.detailItem}>
+          <Text style={styles.detailTitle}>Rating:</Text>
+          <Text style={styles.detailValue}>{product.rating}</Text>
+        </View>
+        <View style={styles.detailItem}>
+          <Text style={styles.detailTitle}>Stock:</Text>
+          <Text style={styles.detailValue}>{product.stock}</Text>
+        </View>
+        <View style={styles.detailItem}>
+          <Text style={styles.detailTitle}>Discount:</Text>
+          <Text style={styles.detailValue}>{product.discountPercentage}</Text>
+        </View>
+      </View>
     </View>
   )
 }
@@ -23,26 +43,44 @@ const ProductScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: Dimension.DIM2,
-    padding: Dimension.DIM7,
   },
   title: {
     fontSize: Dimension.DIM9,
     fontWeight: FontWeight.bold,
     marginBottom: Dimension.DIM5,
+    marginHorizontal: Dimension.DIM6
   },
   description: {
     fontSize: Dimension.DIM7,
     marginBottom: Dimension.DIM5,
+    marginHorizontal: Dimension.DIM6
   },
   price: {
     fontSize: Dimension.DIM7,
     fontWeight: FontWeight.bold,
   },
   thumbnail: {
-    width: Dimension.width,
-    height: Dimension.height,
+    width: '100%',
+    height: Dimension.height3,
     resizeMode: 'cover',
     marginBottom: Dimension.DIM5,
+  },
+  detailsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginHorizontal: Dimension.DIM6
+  },
+  detailItem: {
+    width: '50%',
+    marginBottom: Dimension.DIM5,
+  },
+  detailTitle: {
+    fontSize: Dimension.DIM7,
+    fontWeight: FontWeight.bold,
+    marginBottom: Dimension.DIM2,
+  },
+  detailValue: {
+    fontSize: Dimension.DIM7,
   },
 })
 
