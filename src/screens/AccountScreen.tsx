@@ -66,7 +66,7 @@ const AccountScreen: React.FC = () => {
               <Icon name="user" size={200} color={Colors.black} style={styles.icon} />
             </View>
             <Text style={styles.welcomeText}>Hi, {userInfo && userInfo.username}!</Text>
-            <Button style={{ width: '100%' }} title={ButtonTitles.LOGOUT} onPress={handleLogout} />
+            <Button title={ButtonTitles.LOGOUT} onPress={handleLogout} />
           </View>
         ) : (
           <View>
