@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { View, TextInput, FlatList, Text, StyleSheet, Image } from 'react-native'
-import { fetchProducts } from '../api'
-import { ButtonTitles, Colors } from '../constants'
+import { ButtonTitles, Colors, Dimension, FontWeight } from '../constants'
 import Button from '../components/CustomButton'
+import {  useSelector } from 'react-redux'
+import { selectProducts } from '../redux/productSlice'
 
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState('')
-  const [products, setProducts] = useState([])
-  const [searchResults, setSearchResults] = useState([])
+  const products = useSelector(selectProducts);
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const data = await fetchProducts()
-        setProducts(data.products)
-        setSearchResults(data.products)
-      } catch (error) {
-        console.error('Error ::', error)
-      }
-    };
-    getProducts()
-  }, [])
+  const [searchResults, setSearchResults] = useState(products)
 
   const handleSearch = () => {
     const filteredResults = products.filter(product =>
@@ -57,37 +46,37 @@ const SearchScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 16,
+    flex: Dimension.DIM2,
+    padding: Dimension.DIM7,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 8,
+    fontSize: Dimension.DIM9,
+    fontWeight: FontWeight.bold,
+    marginBottom: Dimension.DIM5,
   },
   productItem: {
-    marginBottom: 16,
-    backgroundColor: "white",
+    marginBottom: Dimension.DIM7,
+    backgroundColor: Colors.white,
   },
   thumbnail: {
-    width: '100%',
-    height: 200,
+    width: Dimension.width,
+    height: Dimension.height,
     resizeMode: 'cover',
-    marginBottom: 8,
+    marginBottom: Dimension.DIM5,
   },
   price: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: Dimension.DIM7,
+    fontWeight: FontWeight.bold,
   },
   input: {
-    borderWidth: 1,
+    borderWidth: Dimension.DIM2,
     borderColor: Colors.gray,
-    borderRadius: 5,
-    height: 40,
-    paddingHorizontal: 10,
+    borderRadius: Dimension.DIM4,
+    height: Dimension.DIM10,
+    paddingHorizontal: Dimension.DIM6,
   },
   button: {
-    marginVertical: 20,
+    marginVertical: Dimension.DIM8,
   }
 })
 

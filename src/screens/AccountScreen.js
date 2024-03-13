@@ -3,7 +3,8 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import * as Keychain from 'react-native-keychain'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Button from '../components/CustomButton'
-import { Colors, ButtonTitles } from '../constants'
+import { Colors, ButtonTitles, Dimension } from '../constants'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const AccountScreen = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -52,6 +53,7 @@ const AccountScreen = () => {
     <View style={styles.container}>
       {isLoggedIn ? (
         <View>
+          <Icon name="user" size={200} color={Colors.black} />
           <Text>Welcome, {userInfo && userInfo.username}!</Text>
           <Button title={ButtonTitles.LOGOUT} onPress={handleLogout} />
         </View>
@@ -79,7 +81,7 @@ const AccountScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: Dimension.DIM2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -87,10 +89,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.gray,
     borderRadius: 5,
-    height: 40,
-    width: 200,
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    height: Dimensions.buttonHeight,
+    width:  Dimensions.buttonWidth,
+    marginBottom: Dimension.DIM6,
+    paddingHorizontal: Dimension.DIM6,
   },
 })
 
