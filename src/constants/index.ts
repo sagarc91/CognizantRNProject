@@ -47,9 +47,9 @@ export const Dimension = {
     width: "100%"
 }
 
-export const FontWeight = {
-    light: '300',
-    normal: '400',
-    medium: '500',
-    bold: '700',
+export enum FontWeight  {
+    light= '300',
+    normal= '400',
+    medium= '500',
+    bold= '700',
 }

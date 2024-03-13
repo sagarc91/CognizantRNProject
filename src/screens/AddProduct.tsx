@@ -3,12 +3,10 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import { Colors, Dimension, FontWeight } from '../constants'
 import Button from '../components/CustomButton'
 
-//NOTE: this is a simple form i have created just to display a form. no actions involved
-
-const AddProductScreen = () => {
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
+const AddProductScreen: React.FC = () => {
+    const [title, setTitle] = useState<string>('')
+    const [description, setDescription] = useState<string>('')
+    const [price, setPrice] = useState<string>('')
 
     const handleSubmit = () => {
         // Handle the logic for form submission here

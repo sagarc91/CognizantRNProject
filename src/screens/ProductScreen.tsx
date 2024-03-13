@@ -1,8 +1,20 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
+import { RouteProp } from '@react-navigation/native'
 import { Dimension, FontWeight } from '../constants'
+import { Product } from '../types/product'
 
-const ProductScreen = ({ route }) => {
+type RootStackParamList = {
+  Product: { product: Product }
+}
+
+type ProductScreenRouteProp = RouteProp<RootStackParamList, 'Product'>
+
+type ProductScreenProps = {
+  route: ProductScreenRouteProp
+}
+
+const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
   const { product } = route.params
 
   return (
@@ -48,12 +60,12 @@ const styles = StyleSheet.create({
     fontSize: Dimension.DIM9,
     fontWeight: FontWeight.bold,
     marginBottom: Dimension.DIM5,
-    marginHorizontal: Dimension.DIM6
+    marginHorizontal: Dimension.DIM6,
   },
   description: {
     fontSize: Dimension.DIM7,
     marginBottom: Dimension.DIM5,
-    marginHorizontal: Dimension.DIM6
+    marginHorizontal: Dimension.DIM6,
   },
   price: {
     fontSize: Dimension.DIM7,
@@ -68,7 +80,7 @@ const styles = StyleSheet.create({
   detailsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginHorizontal: Dimension.DIM6
+    marginHorizontal: Dimension.DIM6,
   },
   detailItem: {
     width: '50%',
