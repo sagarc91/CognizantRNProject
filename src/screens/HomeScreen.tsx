@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts, selectProducts } from '../redux/productSlice'
 import { fetchProducts } from '../api'
-import { useNavigation } from '@react-navigation/native'
-import { FAB } from 'react-native-paper'
+import { useNavigation, useFocusEffect } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useFocusEffect } from '@react-navigation/native'
+import { FAB } from 'react-native-paper'
 import { Colors, Dimension, FontWeight } from '../constants'
+import { Product } from '../types/product'
 
 const windowWidth = Dimensions.get('window').width
 
-const HomeScreen = () => {
+type Nav = {
+  navigate: (value: string, product?: {}) => void;
+}
+
+const HomeScreen: React.FC = () => {
   const dispatch = useDispatch()
-  const products = useSelector(selectProducts)
-  const navigation = useNavigation()
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [numColumns, setNumColumns] = useState(2)
+  const products: Product[] = useSelector(selectProducts)
+  const navigation = useNavigation<Nav>()
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const [numColumns, setNumColumns] = useState<number>(2)
 
   useFocusEffect(
     React.useCallback(() => {
@@ -25,17 +29,17 @@ const HomeScreen = () => {
         setIsLoggedIn(loginStatus === 'true')
       }
   
-      fetchLoginStatus()
+      fetchLoginStatus();
     }, [])
   )
 
   useEffect(() => {
     fetchProducts()
       .then(data => dispatch(setProducts(data.products)))
-      .catch(error => console.error('Error::', error))
+      .catch(error => console.error('Error:', error))
   }, [dispatch])
 
-  const handleProductPress = (product) => {
+  const handleProductPress = (product: Product) => {
     navigation.navigate('Product', { product })
   }
 
@@ -43,8 +47,8 @@ const HomeScreen = () => {
     navigation.navigate('AddProduct')
   }
 
-  const renderProductItem = ({ item }) => (
-    <TouchableOpacity onPress={() => handleProductPress(item)} title=''>
+  const renderProductItem = ({ item }: { item: Product }) => (
+    <TouchableOpacity onPress={() => handleProductPress(item)}>
       <View style={styles.productItem}>
         <Image style={styles.thumbnail} source={{ uri: item.thumbnail }} />
         <View style={{ padding: 10 }}>
@@ -59,17 +63,17 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <FlatList
         data={products}
-        key={`${numColumns}`} // Update key prop to force a fresh render
-        keyExtractor={item => item.id.toString()}
+        key={`${numColumns}`}
+        keyExtractor={item => item?.id?.toString()}
         renderItem={renderProductItem}
         numColumns={numColumns}
         contentContainerStyle={styles.flatListContent}
       />
-      {isLoggedIn ? <FAB
+      {isLoggedIn && <FAB
         style={styles.fab}
         icon="plus"
         onPress={handleAddProduct}
-      /> : null}
+      />}
     </View>
   )
 }
@@ -88,10 +92,10 @@ const styles = StyleSheet.create({
   productItem: {
     flex: 1,
     backgroundColor: Colors.white,
-    margin: Dimension.DIM5 / 2, // Adjust margin to create spacing between items
-    width: (windowWidth - Dimension.DIM8 * 2 - Dimension.DIM5) / 2, // Set width of each item
-    borderRadius: Dimension.DIM5, // Add border radius to create rounded corners
-    overflow: 'hidden', // Hide any overflow content
+    margin: Dimension.DIM5 / 2,
+    width: (windowWidth - Dimension.DIM8 * 2 - Dimension.DIM5) / 2,
+    borderRadius: Dimension.DIM5,
+    overflow: 'hidden',
     ...Platform.select({
       ios: {
         shadowColor: 'rgba(0, 0, 0, 0.2)',
@@ -109,9 +113,9 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     width: '100%',
-    height: Dimension.height1, // Set height of thumbnail
+    height: Dimension.height1,
     resizeMode: 'cover',
-    borderTopLeftRadius: Dimension.DIM5, // Add border radius to top-left and top-right corners
+    borderTopLeftRadius: Dimension.DIM5,
     borderTopRightRadius: Dimension.DIM5,
   },
   price: {
@@ -126,10 +130,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   flatListContent: {
-    flexDirection: 'row', // Ensure items are displayed in rows
-    flexWrap: 'wrap', // Allow items to wrap to the next row when needed
-    justifyContent: 'space-between', // Space items evenly between each row
-    padding: Dimension.DIM5 / 2, // Add padding to the content container to ensure items are centered
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    padding: Dimension.DIM5 / 2,
   },
 })
 
