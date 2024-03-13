@@ -5,13 +5,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Button from '../components/CustomButton'
 import { Colors, ButtonTitles, Dimension, Spacing } from '../constants'
 import Icon from 'react-native-vector-icons/FontAwesome'
-//I haven't added any validations or such a things in any of the file. As per basic requirements i have designed and implmented
 
-const AccountScreen = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [userInfo, setUserInfo] = useState(null)
+interface UserInfo {
+  username: string
+}
+
+const AccountScreen: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -20,11 +23,11 @@ const AccountScreen = () => {
         const credentials = await Keychain.getGenericPassword()
         if (credentials && credentials.username) {
           setIsLoggedIn(true)
-          const userDetails = { username: credentials.username }
+          const userDetails: UserInfo = { username: credentials.username }
           setUserInfo(userDetails)
         }
       }
-    };
+    }
 
     checkLoginStatus()
   }, [])
@@ -35,20 +38,20 @@ const AccountScreen = () => {
     if (isValid) {
       await Keychain.setGenericPassword(username, password)
       setIsLoggedIn(true)
-      const userDetails = { username: username }
+      const userDetails: UserInfo = { username }
       setUserInfo(userDetails)
       await AsyncStorage.setItem('isLoggedIn', 'true')
     } else {
       // here we can show invalid credentials login, we can show pop-up
     }
-  };
+  }
 
   const handleLogout = async () => {
     await Keychain.resetGenericPassword()
     setIsLoggedIn(false)
     setUserInfo(null)
     await AsyncStorage.removeItem('isLoggedIn')
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -56,14 +59,14 @@ const AccountScreen = () => {
         <Icon name="university" size={100} color={Colors.primary} style={styles.logoIcon} />
       </View>
       <View style={styles.card}>
-        <Text style={styles.heading}>{!isLoggedIn ? "Login" : "Welcome back"}</Text>
+        <Text style={styles.heading}>{!isLoggedIn ? 'Login' : 'Welcome back'}</Text>
         {isLoggedIn ? (
-          <View style={{ justifyContent: "center" }}>
+          <View style={{ justifyContent: 'center' }}>
             <View style={styles.iconContainer}>
               <Icon name="user" size={200} color={Colors.black} style={styles.icon} />
-            </View>            
+            </View>
             <Text style={styles.welcomeText}>Hi, {userInfo && userInfo.username}!</Text>
-            <Button style={{ width: "100%" }} title={ButtonTitles.LOGOUT} onPress={handleLogout} />
+            <Button style={{ width: '100%' }} title={ButtonTitles.LOGOUT} onPress={handleLogout} />
           </View>
         ) : (
           <View>
