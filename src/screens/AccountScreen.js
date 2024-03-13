@@ -6,6 +6,8 @@ import Button from '../components/CustomButton'
 import { Colors, ButtonTitles, Dimension, Spacing } from '../constants'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+//I haven't added any validations or such a things in any of the file. As per basic requirements i have designed and implmented
+
 const AccountScreen = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [username, setUsername] = useState('')
