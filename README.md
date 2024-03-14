@@ -20,7 +20,10 @@ npx react-native run-android
 
 Let Metro Bundler run in its _own_ terminal. 
 
-To run it on iOS
+To run it on iOS go to your ios folder first from root dir of project
+cd ios
+pod install
+cd ..
 npx react-native run-ios
 ```
 
@@ -28,8 +31,6 @@ If everything is set up _correctly_, you should see your new app running in your
 
 ## Step 3: Modifying your App
 **To make changes to your app, navigate to the files associated with the following modules:**
-
-iOS Troubleshooting for RNKeychainManager: If you encounter issues related to RNKeychainManager in iOS, temporarily remove the problematic lines from the file to ensure the app functions properly. Investigate the root cause of the failure with RNKeychainManager. This issue may be related to linking problems, similar to those experienced with vector-icons. While this issue is not critical, it should be addressed.
 
 Home Screen: The Home Screen displays a list of products.
 
