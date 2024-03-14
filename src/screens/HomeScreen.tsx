@@ -12,7 +12,7 @@ import FloatingActionButton from "../components/FloatingActionButton"
 const windowWidth = Dimensions.get('window').width
 
 type Nav = {
-  navigate: (value: string, product?: {}) => void;
+  navigate: (value: string, product?: {}) => void
 }
 
 const HomeScreen: React.FC = () => {
@@ -29,7 +29,7 @@ const HomeScreen: React.FC = () => {
         setIsLoggedIn(loginStatus === 'true')
       }
 
-      fetchLoginStatus();
+      fetchLoginStatus()
     }, [])
   )
 

@@ -6,7 +6,7 @@ import configureAppStore from './store'
 import { Colors } from './constants'
 import TabNavigator from './navigators/TabNavigator'
 
-const store = configureAppStore();
+const store = configureAppStore()
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <TabNavigator />
       </NavigationContainer>
     </Provider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
