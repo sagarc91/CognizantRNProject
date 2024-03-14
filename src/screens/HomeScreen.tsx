@@ -80,7 +80,7 @@ const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: Dimension.DIM2,
     padding: Dimension.DIM7,
     backgroundColor: Colors.lightGrey
   },
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginBottom: Dimension.DIM5,
   },
   productItem: {
-    flex: 1,
+    flex: Dimension.DIM2,
     backgroundColor: Colors.white,
     margin: Dimension.DIM5 / 2,
     width: (windowWidth - Dimension.DIM8 * 2 - Dimension.DIM5) / 2,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     }),
   },
   thumbnail: {
-    width: '100%',
+    width:Dimension.width,
     height: Dimension.height1,
     resizeMode: 'cover',
     borderTopLeftRadius: Dimension.DIM5,

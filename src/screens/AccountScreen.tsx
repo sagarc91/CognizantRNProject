@@ -99,7 +99,7 @@ const AccountScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: Dimension.DIM2,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.lightGray,
@@ -114,12 +114,12 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: Colors.white,
-    borderRadius: 10,
+    borderRadius: Dimension.DIM6,
     padding: Dimension.DIM8,
     shadowColor: Colors.black,
     shadowOffset: {
-      width: 0,
-      height: 2,
+      width: Dimension.DIM1,
+      height: Dimension.DIM2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   heading: {
-    fontSize: 24,
+    fontSize: Dimension.DIM9,
     fontWeight: 'bold',
     marginBottom: Dimension.DIM8,
     textAlign: 'center',
@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: Colors.gray,
-    borderRadius: 5,
-    borderWidth: 1,
+    borderRadius: Dimension.DIM4,
+    borderWidth: Dimension.DIM2,
     marginBottom: Dimension.DIM4,
     paddingHorizontal: Dimension.DIM2,
   },
@@ -145,12 +145,12 @@ const styles = StyleSheet.create({
     marginHorizontal: Dimension.DIM5,
   },
   input: {
-    flex: 1,
+    flex: Dimension.DIM2,
     height: Spacing.buttonHeight,
     paddingHorizontal: Dimension.DIM4,
   },
   welcomeText: {
-    fontSize: 18,
+    fontSize: Dimension.DIM7,
     textAlign: 'center',
     marginBottom: Dimension.DIM4,
   },

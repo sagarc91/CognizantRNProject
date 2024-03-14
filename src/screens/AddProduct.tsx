@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         fontSize: Dimension.DIM7,
     },
     multilineInput: {
-        height: 100,
+        height: Dimension.height1,
         textAlignVertical: 'top',
     },
 })

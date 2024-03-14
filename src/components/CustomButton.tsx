@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet, TouchableOpacityProps } from 'react-native'
-import { Colors, Spacing } from '../constants'
+import { Colors, Spacing, Dimension } from '../constants'
 
 interface ButtonProps extends TouchableOpacityProps {
     title: string
@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
         height: Spacing.buttonHeight,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5,
-        marginVertical: 10,
+        borderRadius: Dimension.DIM4,
+        marginVertical: Dimension.DIM6,
     },
     buttonText: {
         color: Colors.white,
-        fontSize: 16,
+        fontSize: Dimension.DIM7, //here can create size constants but temporary used Dimension.
     },
 })
 

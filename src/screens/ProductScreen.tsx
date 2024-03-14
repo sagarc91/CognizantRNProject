@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     fontWeight: FontWeight.bold,
   },
   thumbnail: {
-    width: '100%',
+    width: Dimension.width,
     height: Dimension.height3,
     resizeMode: 'cover',
     marginBottom: Dimension.DIM5,
