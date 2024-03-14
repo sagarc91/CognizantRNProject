@@ -59,7 +59,7 @@ const SearchScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: Dimension.DIM2,
-    padding: Dimension.DIM7,
+    padding: Dimension.DIM4,
   },
   subContainer:{
     marginHorizontal: Dimension.DIM7,
