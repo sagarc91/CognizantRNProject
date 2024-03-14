@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
 import configureAppStore from './store'
-import { Colors } from './constants'
 import TabNavigator from './navigators/TabNavigator'
 
 const store = configureAppStore()

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Colors, ButtonTitles, Dimension } from '../constants'
+import { Colors, Dimension } from '../constants'
 
 interface FloatingActionButtonProps {
   onPress: () => void
