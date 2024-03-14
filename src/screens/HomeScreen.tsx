@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native'
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Dimensions, Platform, SafeAreaView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts, selectProducts } from '../redux/productSlice'
 import { fetchProducts } from '../api'
@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { FAB } from 'react-native-paper'
 import { Colors, Dimension, FontWeight } from '../constants'
 import { Product } from '../types/product'
-
+import FloatingActionButton from "../components/FloatingActionButton"
 const windowWidth = Dimensions.get('window').width
 
 type Nav = {
@@ -28,7 +28,7 @@ const HomeScreen: React.FC = () => {
         const loginStatus = await AsyncStorage.getItem('isLoggedIn')
         setIsLoggedIn(loginStatus === 'true')
       }
-  
+
       fetchLoginStatus();
     }, [])
   )
@@ -60,28 +60,26 @@ const HomeScreen: React.FC = () => {
   )
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={products}
-        key={`${numColumns}`}
-        keyExtractor={item => item?.id?.toString()}
-        renderItem={renderProductItem}
-        numColumns={numColumns}
-        contentContainerStyle={styles.flatListContent}
-      />
-      {isLoggedIn && <FAB
-        style={styles.fab}
-        icon="plus"
-        onPress={handleAddProduct}
-      />}
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <FlatList
+          data={products}
+          key={`${numColumns}`}
+          keyExtractor={item => item?.id?.toString()}
+          renderItem={renderProductItem}
+          numColumns={numColumns}
+          contentContainerStyle={styles.flatListContent}
+        />
+        {isLoggedIn && <FloatingActionButton onPress={handleAddProduct}
+        />}
+      </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: Dimension.DIM2,
-    padding: Dimension.DIM7,
     backgroundColor: Colors.lightGrey
   },
   title: {
@@ -92,8 +90,8 @@ const styles = StyleSheet.create({
   productItem: {
     flex: Dimension.DIM2,
     backgroundColor: Colors.white,
-    margin: Dimension.DIM5 / 2,
-    width: (windowWidth - Dimension.DIM8 * 2 - Dimension.DIM5) / 2,
+    margin: Dimension.DIM5,
+    width: (windowWidth - Dimension.DIM8 * 2 - Dimension.DIM4) / 2,
     borderRadius: Dimension.DIM5,
     overflow: 'hidden',
     ...Platform.select({
@@ -112,7 +110,7 @@ const styles = StyleSheet.create({
     }),
   },
   thumbnail: {
-    width:Dimension.width,
+    width: Dimension.width,
     height: Dimension.height1,
     resizeMode: 'cover',
     borderTopLeftRadius: Dimension.DIM5,

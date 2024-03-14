@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, TextInput, FlatList, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, TextInput, FlatList, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView } from 'react-native'
 import { Colors, Dimension, FontWeight } from '../constants'
 import { useSelector } from 'react-redux'
 import { selectProducts } from '../redux/productSlice'
@@ -24,7 +24,9 @@ const SearchScreen: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+
+    <View style={styles.subContainer}>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Search products"
@@ -50,6 +52,7 @@ const SearchScreen: React.FC = () => {
         )}
       />
     </View>
+    </SafeAreaView>
   )
 }
 
@@ -57,6 +60,9 @@ const styles = StyleSheet.create({
   container: {
     flex: Dimension.DIM2,
     padding: Dimension.DIM7,
+  },
+  subContainer:{
+    marginHorizontal: Dimension.DIM7,
   },
   title: {
     fontSize: Dimension.DIM9,
